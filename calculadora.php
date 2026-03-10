@@ -24,5 +24,55 @@
 
         <button type="submit">Enviar</button>
     </form>
+
+    <?php 
+   
+    class Calculadora {
+        public $num1;
+        public $num2;
+        public function adicao(){
+            return $this->num1 + $this->num2;
+        }
+
+        public function subtracao(){
+            return $this->num1 - $this->num2;
+        }
+
+        public function multiplicacao(){
+            return $this->num1 * $this->num2;
+        }
+
+        public function divisao(){
+            return $this->num1 / $this->num2;
+        }
+    }
+
+    if (isset($_GET['primeiro']) && isset($_GET['segundo'])) {
+
+    $calc = new Calculadora();
+    $calc->num1 = $_GET["primeiro"];
+    $calc->num2 = $_GET["segundo"];
+    $operacao = $_GET["operacao"];
+
+    if ($operacao == "adicao"){
+        $resultado = $calc->adicao();
+    }
+
+    elseif ($operacao == "subtracao"){
+        $resultado = $calc->subtracao();
+    }
+
+    elseif ($operacao == "multiplicacao"){
+        $resultado = $calc->multiplicacao();
+    }
+
+    elseif ($operacao == "divisao"){
+        $resultado = $calc->divisao();
+    }
+
+    echo "<h2>Resultado: $resultado</h2>";
+    }
+    
+    ?>
 </body>
 </html>
